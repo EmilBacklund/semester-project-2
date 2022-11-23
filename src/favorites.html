@@ -17,13 +17,35 @@
     <header class="p-5 flex justify-between items-center">
       <div class="flex items-center gap-4">
         <a href="/"><i class="font-syne not-italic text-4xl">AH</i></a>
-        <a href="/src/favorites.html"
+        <a href="favorites.html"
           ><span><img src="images/bxs-heart.svg" alt="favorite" /></span
         ></a>
       </div>
-      <a href="/src/profile.html"
+      <a href="profile.html"
         ><span><img src="images/account-circle.svg" alt="profile" /></span
       ></a>
     </header>
+    <main class="max-w-5xl mx-auto">
+      <section>
+        <div class="px-5 text-xl flex items-center gap-4 mb-4">
+          <div class="h-14 border-l border-white w-0"></div>
+          <div>
+            <h1 class="font-semibold">Favorites</h1>
+            <p>Latest</p>
+          </div>
+        </div>
+        <div id="favoriteContainer"></div>
+      </section>
+      <section>
+        <div class="px-5 text-xl flex items-center gap-4 mb-4">
+          <div class="h-14 border-l border-white w-0"></div>
+          <div>
+            <h1 class="font-semibold">Won items</h1>
+            <p>Latest</p>
+          </div>
+        </div>
+        <div id="wonItemsContainer"></div>
+      </section>
+    </main>
   </body>
 </html>

@@ -35,6 +35,8 @@ function draggableSlider(slide) {
   });
 }
 
+export default draggableSlider;
+
 function auctionHTML() {
   if (detailButton.attributes.src.value) {
     auctionContainer.innerHTML = `
