@@ -1,7 +1,7 @@
 const { resolve } = require('path');
 import { defineConfig } from 'vite';
 
-export default defineConfig ({
+export default defineConfig({
   root: resolve(__dirname, 'src'),
   publicDir: resolve('public'),
   preview: {
@@ -12,6 +12,7 @@ export default defineConfig ({
       input: {
         homePage: resolve(__dirname, 'src/index.html'),
         profilePage: resolve(__dirname, 'src/profile.html'),
+        detailPage: resolve(__dirname, 'src/details.html'),
       },
     },
     outDir: '../dist',

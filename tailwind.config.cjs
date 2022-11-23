@@ -5,6 +5,7 @@ module.exports = {
       fontFamily: {
         signika: ['Signika Negative', 'sans-serif'],
         syne: ['Syne Mono', 'monospace'],
+        poppins: ['Poppins', 'sans-serif'],
       },
     },
   },
