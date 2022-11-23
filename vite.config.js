@@ -13,6 +13,7 @@ export default defineConfig({
         homePage: resolve(__dirname, 'src/index.html'),
         profilePage: resolve(__dirname, 'src/profile.html'),
         detailPage: resolve(__dirname, 'src/details.html'),
+        favoritePage: resolve(__dirname, 'src/favorites.html'),
       },
     },
     outDir: '../dist',
