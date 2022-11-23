@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300;400;500;600;700&family=Syne+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <title>AH | Favorites</title>
+    <script type="module" src="./js/index.js" defer></script>
+  </head>
+  <body class="bg-stone-900 text-white font-signika text-sm font-light">
+    <header class="p-5 flex justify-between items-center">
+      <div class="flex items-center gap-4">
+        <a href="/"><i class="font-syne not-italic text-4xl">AH</i></a>
+        <a href="favorites.html"
+          ><span><img src="images/bxs-heart.svg" alt="favorite" /></span
+        ></a>
+      </div>
+      <a href="profile.html"
+        ><span><img src="images/account-circle.svg" alt="profile" /></span
+      ></a>
+    </header>
+    <main class="max-w-5xl mx-auto">
+      <section>
+        <div class="px-5 text-xl flex items-center gap-4 mb-4">
+          <div class="h-14 border-l border-white w-0"></div>
+          <div>
+            <h1 class="font-semibold">Favorites</h1>
+            <p>Latest</p>
+          </div>
+        </div>
+        <div id="favoriteContainer"></div>
+      </section>
+      <section>
+        <div class="px-5 text-xl flex items-center gap-4 mb-4">
+          <div class="h-14 border-l border-white w-0"></div>
+          <div>
+            <h1 class="font-semibold">Won items</h1>
+            <p>Latest</p>
+          </div>
+        </div>
+        <div id="wonItemsContainer"></div>
+      </section>
+    </main>
+  </body>
+</html>
