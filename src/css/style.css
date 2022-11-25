@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 .active {
-    transform: scale(1.03);
     cursor: grabbing;
     cursor: -webkit-grabbing;
     transition: all;
@@ -49,3 +48,24 @@
     border: 8px solid rgba(0, 0, 0, 0);
     background-clip: padding-box;
 }
+
+.resize-animation-stopper * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  #postContainer1.x-slide::-webkit-scrollbar-thumb, #postContainer2.x-slide::-webkit-scrollbar-thumb {
+    background-color: #1C1917;
+  }
+
+  #postContainer1.x-slide::-webkit-scrollbar-track, #postContainer2.x-slide::-webkit-scrollbar-track {
+    background-color: #1C1917;
+  }
+
+  #postContainer1:hover.x-slide::-webkit-scrollbar-thumb, #postContainer2:hover.x-slide::-webkit-scrollbar-thumb {
+    background-color: #555;
+  }
+
+  #postContainer1:hover.x-slide::-webkit-scrollbar-track, #postContainer2:hover.x-slide::-webkit-scrollbar-track {
+    background-color: #777;
+  }
