@@ -1,3 +1,5 @@
+import draggableSlider from './horizontalScroll';
+
 const detailButton = document.querySelector('#hide-details');
 const detailInfo = document.querySelector('#detailInfo');
 const imageContainer = document.querySelector('#imageContainer');
@@ -5,37 +7,6 @@ const productContainer = document.querySelector('#productContainer');
 const textHelper = document.querySelector('#textHelper');
 const auctionContainer = document.querySelector('#auctionContainer');
 const bidButtons = document.querySelector('#bidContainer');
-
-function draggableSlider(slide) {
-  let isDown = false;
-  let startX;
-  let scrollLeft;
-  const slider = slide;
-
-  slider.addEventListener('mousedown', (e) => {
-    isDown = true;
-    slider.classList.add('active');
-    startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
-  });
-  slider.addEventListener('mouseleave', () => {
-    isDown = false;
-    slider.classList.remove('active');
-  });
-  slider.addEventListener('mouseup', () => {
-    isDown = false;
-    slider.classList.remove('active');
-  });
-  slider.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - slider.offsetLeft;
-    const walk = x - startX;
-    slider.scrollLeft = scrollLeft - walk;
-  });
-}
-
-export default draggableSlider;
 
 function auctionHTML() {
   if (detailButton.attributes.src.value) {
