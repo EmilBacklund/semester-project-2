@@ -15,6 +15,7 @@ export default defineConfig({
         detailPage: resolve(__dirname, 'src/details.html'),
         favoritePage: resolve(__dirname, 'src/favorites.html'),
         auctioningPage: resolve(__dirname, 'src/auctioning.html'),
+        loginPage: resolve(__dirname, 'src/auctioning.html'),
       },
     },
     outDir: '../dist',
