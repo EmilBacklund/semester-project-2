@@ -29,107 +29,80 @@
       ></a>
     </header>
     <main class="max-w-3xl mx-auto flex flex-col gap-4 relative">
-      <section class="text-center flex flex-col gap-4">
-        <h1 class="font-syne text-4xl">
-          <span class="text-red-500">A</span>uction
-          <span class="text-red-500">H</span>ouse
-        </h1>
-        <p class="text-xl">Sign up and get:</p>
-        <div class="flex justify-center">
-          <div
-            class="flex items-center gap-2 text-xl px-5 py-3 bg-zinc-800 rounded-xl shadow-[inset_0_0_6px_rgba(255,255,255,0.25)]"
-          >
-            <img src="images/coin.svg" alt="coin" />
-            <p class="font-poppins font-semibold">
-              <span class="text-amber-400">1000</span> CR
-            </p>
-          </div>
-        </div>
-      </section>
-      <section class="">
+      <section
+        id="introContainer"
+        class="text-center flex flex-col gap-4"
+      ></section>
+      <section>
         <div class="flex text-xl font-semibold">
-          <button class="w-full py-2 bg-green-500 rounded-tl-xl">
+          <button
+            id="signup"
+            class="w-full py-2 bg-green-500 rounded-tl-xl hover:outline"
+          >
             Sign Up
           </button>
           <button
-            class="w-full rounded-tr-xl py-2 shadow-[inset_0_0_6px_rgba(255,255,255,0.25)]"
+            id="login"
+            class="w-full rounded-tr-xl py-2 shadow-[inset_0_0_6px_rgba(255,255,255,0.25)] hover:outline transition-shadow duration-300 hover:shadow-[inset_0_0_20px_rgba(255,255,255,0.25)]"
           >
             Log In
           </button>
         </div>
-        <div id="loginContainer" class="px-5 py-4 flex flex-col gap-2">
-          <div class="w-full flex flex-col">
-            <label for="name">Name:</label>
-            <input
-              class="p-2 rounded text-black"
-              type="text"
-              placeholder="Name.."
-              name="name"
-            />
-          </div>
-          <div class="w-full flex flex-col">
-            <label for="email">Email:</label>
-            <input
-              class="p-2 rounded text-black"
-              type="email"
-              placeholder="Email.."
-              name="email"
-            />
-          </div>
-          <div class="w-full flex flex-col">
-            <label for="password">Password:</label>
-            <input
-              class="p-2 rounded text-black"
-              type="password"
-              placeholder="Password.."
-              name="password"
-            />
-          </div>
-          <div class="flex gap-2 items-center">
-            <p>Profile Image:</p>
-            <img
-              id="chooseImage"
-              class="cursor-pointer"
-              src="images/add-image.svg"
-              alt=""
-            />
-          </div>
-        </div>
+        <div
+          id="loginContainer"
+          class="px-5 py-4 flex flex-col gap-2 font-poppins"
+        ></div>
       </section>
       <div
         id="chooseImgContainer"
-        class="absolute inset-1/2 -translate-y-1/2 -translate-x-1/2 bg-gray-300 px-5 py-4 z-20 w-10/12 h-full flex flex-col rounded"
+        class="absolute text-black inset-1/2 -translate-y-1/2 -translate-x-1/2 bg-slate-100 px-5 py-4 z-20 w-10/12 h-fit rounded hidden"
       >
-        <p class="text-black text-base font-semibold">Choose a avatar:</p>
-        <div class="flex justify-center">
-          <div class="flex gap-4 w-2/3">
-            <img
-              class="w-1/2"
-              src="https://cdn-icons-png.flaticon.com/512/2202/2202112.png"
-              alt=""
-            />
-            <img
-              class="w-1/2"
-              src="https://cdn-icons-png.flaticon.com/512/4140/4140047.png"
-              alt=""
-            />
-          </div>
-        </div>
-        <div class="flex flex-col">
-          <label for="avatar" class="text-black text-base font-semibold"
-            >Type in image URL to your avatar:</label
+        <div class="flex flex-col gap-4 relative">
+          <div
+            id="closeButton"
+            class="absolute right-0 top-0 text-3xl font-semibold font-poppins cursor-pointer"
           >
-          <input
-            class="p-2 rounded text-black"
-            type="text"
-            placeholder="avatar URL.."
-          />
+            X
+          </div>
+          <div>
+            <p class="text-base font-semibold">Choose a avatar:</p>
+            <div class="flex justify-center">
+              <div class="flex gap-4 w-2/3">
+                <img
+                  class="avatar w-1/2 cursor-pointer transition-all duration-200 hover:shadow-2xl"
+                  src="https://cdn-icons-png.flaticon.com/512/2202/2202112.png"
+                  alt=""
+                />
+                <img
+                  class="avatar w-1/2 cursor-pointer transition-all duration-200 hover:shadow-2xl"
+                  src="https://cdn-icons-png.flaticon.com/512/4140/4140047.png"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <p class="text-center font-semibold">Or</p>
+          <div class="flex flex-col">
+            <label for="avatar" class="text-base font-semibold"
+              >Paste in image URL to your avatar:</label
+            >
+            <input
+              id="imgURLInput"
+              class="p-2 rounded border border-black font-poppins"
+              type="text"
+              placeholder="Paste image URL & press enter.."
+              name="avatar"
+            />
+            <p id="imgURLInputError" class="text-red-500 mt-2 hidden">
+              Textfield can't be empty
+            </p>
+          </div>
         </div>
       </div>
     </main>
     <div
       id="chooseImgOverlay"
-      class="absolute w-full h-full top-0 bottom-0 bg-black opacity-80 z-10 hidden"
+      class="absolute w-full h-screen top-0 bottom-0 bg-black opacity-80 z-10 hidden"
     ></div>
   </body>
 </html>
