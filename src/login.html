@@ -12,7 +12,8 @@
     />
     <title>AH | Log in</title>
     <script type="module" src="./js/index.js" defer></script>
-    <script type="module" src="./js/accountValidation.js" defer></script>
+    <script type="module" src="./js/signup.js" defer></script>
+    <script type="module" src="./js/login.js" defer></script>
   </head>
   <body
     class="bg-stone-900 text-white font-signika text-sm font-light relative"
@@ -28,30 +29,30 @@
         ><span><img src="images/not-logged-in.svg" alt="profile" /></span
       ></a>
     </header>
-    <main class="max-w-3xl mx-auto flex flex-col gap-4 relative">
+    <main class="mx-auto flex flex-col gap-4 relative max-w-md">
       <section
         id="introContainer"
         class="text-center flex flex-col gap-4"
       ></section>
-      <section>
+      <section class="sm:shadow-[0_0_15px_rgba(0,0,0,0.5)] rounded-xl mb-12">
         <div class="flex text-xl font-semibold">
           <button
             id="signup"
-            class="w-full py-2 bg-green-500 rounded-tl-xl hover:outline"
+            class="w-full py-2 bg-green-500 rounded-tl-xl hover:outline hover:z-10"
           >
             Sign Up
           </button>
           <button
             id="login"
-            class="w-full rounded-tr-xl py-2 shadow-[inset_0_0_6px_rgba(255,255,255,0.25)] hover:outline transition-shadow duration-300 hover:shadow-[inset_0_0_20px_rgba(255,255,255,0.25)]"
+            class="w-full rounded-tr-xl py-2 shadow-[inset_0_0_6px_rgba(255,255,255,0.25)] hover:outline transition-shadow duration-300 hover:shadow-[inset_0_0_20px_rgba(255,255,255,0.25)] hover:z-10"
           >
             Log In
           </button>
         </div>
-        <div
+        <form
           id="loginContainer"
           class="px-5 py-4 flex flex-col gap-2 font-poppins"
-        ></div>
+        ></form>
       </section>
       <div
         id="chooseImgContainer"
