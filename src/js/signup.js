@@ -1,15 +1,7 @@
 import { loginInnerHTML, signupInnerHTML } from './helpers/loginInnerHTML';
 import { REGISTER_ENDPOINT } from './settings/api';
-
-function validateEmail(mail) {
-  const regEx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@(stud.noroff.no|noroff.no)$/;
-  if (mail.match(regEx)) {
-    return true;
-  }
-  return false;
-}
-
-export default validateEmail;
+import validateLoginInfo from './login';
+import validateInput from './helpers/validation';
 
 const loginContainer = document.querySelector('#loginContainer');
 const introContainer = document.querySelector('#introContainer');
@@ -83,14 +75,6 @@ function clickHandler() {
   const allSignupFields = document.querySelectorAll('.signup-field');
   const submitButton = document.querySelector('#submit');
 
-  signupEmail.addEventListener('keyup', () => {
-    if (signupEmail.value.includes('@') && !validateEmail(signupEmail.value)) {
-      signupEmailError.classList.remove('hidden');
-    } else {
-      signupEmailError.classList.add('hidden');
-    }
-  });
-
   for (let i = 0; i < emptyFieldError.length; i += 1) {
     emptyFieldError[i].classList.add('hidden');
     allSignupFields[i].addEventListener('keyup', () => {
@@ -114,28 +98,19 @@ function clickHandler() {
   });
 
   const generalMessage = document.querySelector('#generalMessage');
+  const signupForm = document.querySelector('#signupForm');
 
-  loginContainer.addEventListener('submit', (event) => {
+  signupForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    let signupNameIsValid = false;
-    if (
-      signupName.value.trim().length > 0 &&
-      !signupName.value.match(/[!"#$%&'()*+,-./:;<=>?@[\]^`{|}~]/g)
-    ) {
-      signupNameIsValid = true;
-    }
-
-    let signupPasswordIsValid = false;
-    if (signupPassword.value.trim().length > 7) {
-      signupPasswordError.classList.add('hidden');
-      signupPasswordIsValid = true;
-    } else if (
-      signupPassword.value.trim().length < 7 &&
-      signupPassword.value.trim().length > 0
-    ) {
-      signupPasswordError.classList.remove('hidden');
-    }
+    validateInput(
+      signupName,
+      signupNameError,
+      signupPassword,
+      signupPasswordError,
+      signupEmail,
+      signupEmailError,
+    );
 
     let imageURLIsValid = false;
     if (!imageURL.innerHTML) {
@@ -143,14 +118,6 @@ function clickHandler() {
     } else {
       errorImage.classList.add('hidden');
       imageURLIsValid = true;
-    }
-
-    let signupEmailIsValid = false;
-    if (signupEmail.value.trim().length && validateEmail(signupEmail.value)) {
-      signupEmailError.classList.add('hidden');
-      signupEmailIsValid = true;
-    } else if (!validateEmail(signupEmail.value) && signupEmail.value > 0) {
-      signupEmailError.classList.remove('hidden');
     }
 
     for (let j = 0; j < emptyFieldError.length; j += 1) {
@@ -164,10 +131,14 @@ function clickHandler() {
     submitButton.scrollIntoView({ behavior: 'smooth' });
 
     const formIsValid =
-      signupEmailIsValid &&
-      signupNameIsValid &&
-      signupPasswordIsValid &&
-      imageURLIsValid;
+      validateInput(
+        signupName,
+        signupNameError,
+        signupPassword,
+        signupPasswordError,
+        signupEmail,
+        signupEmailError,
+      ) && imageURLIsValid;
 
     if (formIsValid) {
       const userData = {
@@ -206,15 +177,17 @@ function clickHandler() {
         }
 
         const err = await response.json();
-        const message = `${err.errors[0].message}`;
+        const message = `${err.errors[0].message} 😬`;
         throw new Error(message);
       })().catch((err) => {
         generalMessage.classList.remove('text-white');
+        generalMessage.classList.remove('hidden');
         generalMessage.classList.add('text-red-500');
         generalMessage.innerHTML = err;
       });
     } else {
       generalMessage.classList.remove('text-red-500');
+      generalMessage.classList.remove('hidden');
       generalMessage.classList.add('text-white');
       generalMessage.innerHTML = `Please fill out all required fields 😘`;
     }
@@ -234,6 +207,7 @@ signup.addEventListener('click', () => {
 
 login.addEventListener('click', () => {
   loginInnerHTML(loginContainer, introContainer);
+  validateLoginInfo();
   login.className =
     'w-full py-2 bg-green-500 rounded-tr-xl hover:outline hover:z-10';
   signup.className =
