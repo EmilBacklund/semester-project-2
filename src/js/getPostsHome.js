@@ -5,6 +5,8 @@ import displayPosts from './helpers/displayPosts';
 const postContainer = document.querySelector('#postContainer');
 draggableSlider(postContainer);
 
+const generalMessage = document.querySelector('#generalMessage');
+let errorMessage = '';
 let postData = [];
 
 async function getAllPosts() {
@@ -12,12 +14,31 @@ async function getAllPosts() {
     method: 'GET',
   });
 
+  postData = await response.json();
+
   console.log(response);
   if (response.ok) {
-    postData = await response.json();
+    generalMessage.classList.add('hidden');
     displayPosts(postData, postContainer);
-    // console.log(postData);
   }
+
+  if (postData.errors[0].message) {
+    errorMessage = `
+  <span class="text-red-500">Error:</span> 
+  ${postData.errors[0].message} 
+  <span class="text-red-500">Error code</span>: 
+  ${postData.statusCode}`;
+  } else {
+    errorMessage = `
+    <span class="text-red-500">Error:</span> 
+    ${postData.status} 
+    <span class="text-red-500">Error code</span>: 
+    ${postData.statusCode}`;
+  }
+
+  console.log(postData);
+  generalMessage.classList.remove('hidden');
+  generalMessage.innerHTML = errorMessage;
 }
 
 getAllPosts();
