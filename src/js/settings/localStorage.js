@@ -15,7 +15,7 @@ function getFromStorage(key) {
   if (value) {
     return JSON.parse(value);
   }
-  return [];
+  return false;
 }
 
 function getUserFromLocalStorage() {
@@ -28,6 +28,7 @@ function getUserFromLocalStorage() {
     credit,
     token,
   };
+
   if (userData) {
     return userData;
   }

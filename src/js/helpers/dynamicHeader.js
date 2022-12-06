@@ -13,6 +13,7 @@ function dynamicHeader() {
     if (userData.credit) {
       return `
     <div class="flex items-center gap-2 text-base md:text-xl  px-2 py-1 bg-zinc-800 rounded-xl shadow-[inset_0_0_6px_rgba(255,255,255,0.25)]">
+    <img src="images/coin.svg" alt="coin" />
          <p class="font-poppins font-semibold cursor-default">
             <span class="text-amber-400">${userData.credit}</span> CR
          </p>
@@ -31,7 +32,7 @@ function dynamicHeader() {
     }
     return `
     <a class="w-8 h-8" href="login.html"
-        ><img class="object-contain" src="images/not-logged-in" alt="log in" /></a>
+        ><img class="object-contain" src="images/not-logged-in.svg" alt="log in" /></a>
     `;
   }
 
@@ -65,34 +66,34 @@ function dynamicHeader() {
           <div id="fav" class="absolute h-full w-full bg-no-repeat bg-center transition-all hover:scale-125 duration-300 opacity-0 hover:opacity-100 hover:bg-[url('images/bxs-heart.svg')]">
           </div>
     </div>`;
+
+    const fav = document.querySelector('#fav');
+    const noFav = document.querySelector('#noFav');
+    fav.addEventListener('mouseover', () => {
+      noFav.classList.add('hidden');
+      noFav.classList.add('opacity-0');
+    });
+    fav.addEventListener('mousedown', () => {
+      fav.classList.remove('hover:scale-125');
+      fav.classList.remove('scale-125');
+      fav.classList.add('scale-105');
+    });
+
+    fav.addEventListener('mouseup', () => {
+      fav.classList.toggle('scale-125');
+      fav.classList.toggle('opacity-100');
+      fav.classList.toggle('hover:opacity-100');
+      fav.classList.toggle('opacity-0');
+      fav.classList.toggle("bg-[url('images/bxs-heart.svg')]");
+      fav.classList.remove('scale-105');
+    });
+
+    fav.addEventListener('mouseleave', () => {
+      noFav.classList.add('opacity-100');
+      noFav.classList.remove('hidden');
+      fav.classList.add('hover:scale-125');
+    });
   }
-
-  const fav = document.querySelector('#fav');
-  const noFav = document.querySelector('#noFav');
-  fav.addEventListener('mouseover', () => {
-    noFav.classList.add('hidden');
-    noFav.classList.add('opacity-0');
-  });
-  fav.addEventListener('mousedown', () => {
-    fav.classList.remove('hover:scale-125');
-    fav.classList.remove('scale-125');
-    fav.classList.add('scale-105');
-  });
-
-  fav.addEventListener('mouseup', () => {
-    fav.classList.toggle('scale-125');
-    fav.classList.toggle('opacity-100');
-    fav.classList.toggle('hover:opacity-100');
-    fav.classList.toggle('opacity-0');
-    fav.classList.toggle("bg-[url('images/bxs-heart.svg')]");
-    fav.classList.remove('scale-105');
-  });
-
-  fav.addEventListener('mouseleave', () => {
-    noFav.classList.add('opacity-100');
-    noFav.classList.remove('hidden');
-    fav.classList.add('hover:scale-125');
-  });
 }
 
 export default dynamicHeader;

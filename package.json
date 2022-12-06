@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint src/js/*",
+    "lint": "eslint src/js/**",
     "lint-fix": "npx eslint --fix src/js/.",
     "prettier-write": "npx prettier --write ./**/*.{js,html}",
     "prettier-check": "npx prettier --check ./**/*.{js,html}"

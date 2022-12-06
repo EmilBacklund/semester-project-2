@@ -77,7 +77,7 @@ function validateLoginInfo() {
           saveUserInLocalStorage(data.user);
           saveTokenInLocalStorage(data.accessToken);
           saveCreditsInLocalStorage(data.credits);
-          //   window.location.href = '/index.html';
+          window.location.href = '/index.html';
         })
         .catch((errorMessage) => {
           loginMessage.innerHTML = `${errorMessage} 😓`;
