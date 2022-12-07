@@ -15,7 +15,7 @@ function auctionHTML() {
     auctionContainer.innerHTML = `
     <div class="pt-8 px-5 md:pt-0 md:px-0 md:absolute md:bottom-1/2 md:translate-y-[calc(50%-46px)] w-full">
     <div class="text-xl inline-block">
-        <h1 class="font-semibold">Backpack</h1>
+        <h1 id="itemSliderTitle" class="font-semibold"></h1>
         <p>Currently Highest Bid:</p>
     </div>
     <div id="slider" class="x-slide overflow-x-auto flex gap-5 w-full transition-all duration-200 cursor-grab">

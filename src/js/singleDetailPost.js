@@ -4,6 +4,8 @@ import { SINGLEPOST_ENDPOINT } from './settings/api';
 const paramString = window.location.search;
 const searchParam = new URLSearchParams(paramString);
 const postID = searchParam.get('id');
+const now = DateTime.now();
+console.log(now);
 
 async function postDetail() {
   const response = await fetch(
@@ -13,6 +15,24 @@ async function postDetail() {
     },
   );
   const data = await response.json();
+  const { endsAt } = data;
+  const timeBetween = DateTime.fromISO(endsAt)
+    .diff(now, ['days', 'hours', 'minutes', 'seconds'])
+    .toObject();
+  let { days } = timeBetween;
+  let { hours } = timeBetween;
+  let { minutes } = timeBetween;
+  let seconds = Math.round(timeBetween.seconds);
+
+  days = `${days ? `${days} days` : ''}`;
+  hours = `${hours ? `${hours} hours` : ''}`;
+  minutes = `${minutes ? `${minutes} minutes` : ''}`;
+  seconds = `${seconds ? `${seconds} seconds` : ''}`;
+
+  const itemDuration = document.querySelector('#itemDuration');
+
+  itemDuration.innerHTML = `<span class="font-semibold">Time left:</span>
+  ${days} ${hours} ${minutes} ${seconds}`;
 
   const itemImage = document.querySelector('#itemImage');
   if (data.media[0]) {
@@ -47,6 +67,10 @@ async function postDetail() {
   }
 
   const slider = document.querySelector('#slider');
+  const itemSliderTitle = document.querySelector('#itemSliderTitle');
+  if (itemSliderTitle) {
+    itemSliderTitle.innerHTML = `${data.title}`;
+  }
 
   if (slider) {
     let counter = 0;
