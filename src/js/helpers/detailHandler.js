@@ -8,6 +8,10 @@ const productContainer = document.querySelector('#productContainer');
 const textHelper = document.querySelector('#textHelper');
 const auctionContainer = document.querySelector('#auctionContainer');
 const bidButtons = document.querySelector('#bidContainer');
+const bidMessageBtn = document.querySelector('#bidMessageBtn');
+const bidMessage = document.querySelector('#bidMessage');
+const bidMessageContainer = document.querySelector('#bidMessageContainer');
+
 let isLoaded = true;
 
 function auctionHTML() {
@@ -21,12 +25,20 @@ function auctionHTML() {
     <div id="slider" class="x-slide overflow-x-auto flex gap-5 w-full transition-all duration-200 cursor-grab">
     
    
-    
+      
     </div>
     </div>
     `;
   }
 }
+
+bidMessageBtn.addEventListener('click', () => {
+  bidMessageContainer.classList.remove('flex');
+  bidMessageContainer.classList.add('hidden');
+  bidMessage.innerHTML = ``;
+  auctionHTML();
+  postDetail();
+});
 
 function showAuctionDetails() {
   if (detailButton.attributes.src.value === 'images/show-info.svg') {

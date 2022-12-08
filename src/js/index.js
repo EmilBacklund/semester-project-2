@@ -1,4 +1,7 @@
 import '../css/style.css';
 import dynamicHeader from './helpers/dynamicHeader';
+import updateLocalStorage from './settings/updateLocalStorage';
 
-dynamicHeader();
+updateLocalStorage().then(() => {
+  dynamicHeader();
+});

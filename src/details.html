@@ -15,6 +15,7 @@
     <script type="module" src="./js/helpers/detailHandler.js" defer></script>
     <script type="module" src="./js/helpers/resizeTransitions.js"></script>
     <script type="module" src="./js/singleDetailPost.js" defer></script>
+    <script type="module" src="./js/bidOnItem.js" defer></script>
   </head>
   <body
     class="bg-stone-900 text-white font-signika text-sm font-light overflow-hidden"
@@ -27,6 +28,18 @@
       id="productContainer"
       class="break-words relative max-w-3xl mx-auto h-[calc(100vh-129px)] md:flex md:flex-wrap md:h-[calc(100vh-72px)]"
     >
+      <div
+        id="bidMessageContainer"
+        class="absolute rounded shadow-2xl w-full sm:w-auto hidden flex-col items-center gap-4 z-10 px-6 py-4 bg-black left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+      >
+        <p id="bidMessage" class="text-base sm:text-2xl"></p>
+        <button
+          id="bidMessageBtn"
+          class="text-2xl px-4 cursor-pointer rounded bg-white hover:bg-slate-400 transition-colors duration-200 font-semibold text-black"
+        >
+          Ok
+        </button>
+      </div>
       <div
         id="imageContainer"
         class="h-2/3 w-full overflow-hidden transition-all duration-200 md:w-1/2 md:h-2/4 md:rounded-br-none md:rounded-bl-md md:rounded-tl-md"
@@ -45,7 +58,10 @@
           </p>
         </div>
         <p id="itemDuration" class="font-poppins"></p>
-        <p id="itemTagContainer" class="font-poppins"></p>
+        <div id="itemTagContainer" class="font-poppins flex gap-2">
+          <p class="font-semibold">Tags:</p>
+          <p id="itemTags"></p>
+        </div>
         <div class="font-poppins">
           <p class="font-semibold">Description:</p>
           <p id="itemDescription" class="text-base"></p>
@@ -68,19 +84,23 @@
         id="auctionContainer"
       ></div>
       <div
-        class="absolute bottom-0 flex w-full overflow-hidden h-0 md:left-auto md:h-auto md:bottom-4"
+        class="absolute font-poppins bottom-0 flex w-full overflow-hidden h-0 md:left-auto md:h-auto md:bottom-4"
         id="bidContainer"
       >
         <button
+          id="creditBtn50"
+          value="50"
           class="py-3 w-1/2 transition-all duration-200 bg-green-500 hover:bg-green-600 flex flex-col items-center rounded-tl-2xl md:rounded-bl-md md:rounded-tl-md"
         >
-          <span>Raise bet</span
+          <span>Raise bid</span
           ><span class="text-2xl font-semibold">+50 CR</span>
         </button>
         <button
+          id="creditBtn100"
+          value="100"
           class="py-3 w-1/2 transition-all duration-200 bg-green-700 hover:bg-green-800 flex flex-col items-center rounded-tr-2xl md:rounded-br-md md:rounded-tr-md"
         >
-          <span>Raise bet</span
+          <span>Raise bid</span
           ><span class="text-2xl font-semibold">+100 CR</span>
         </button>
       </div>

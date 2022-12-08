@@ -20,9 +20,7 @@ async function getAllPosts() {
   if (response.ok) {
     generalMessage.classList.add('hidden');
     displayPosts(postData, postContainer);
-  }
-
-  if (postData.errors[0].message) {
+  } else if (postData.errors[0].message) {
     errorMessage = `
   <span class="text-red-500">Error:</span> 
   ${postData.errors[0].message} 

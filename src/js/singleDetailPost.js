@@ -4,8 +4,8 @@ import { SINGLEPOST_ENDPOINT } from './settings/api';
 const paramString = window.location.search;
 const searchParam = new URLSearchParams(paramString);
 const postID = searchParam.get('id');
-const now = DateTime.now();
-console.log(now);
+
+export { postID };
 
 async function postDetail() {
   const response = await fetch(
@@ -15,7 +15,9 @@ async function postDetail() {
     },
   );
   const data = await response.json();
+  console.log(data);
   const { endsAt } = data;
+  const now = DateTime.now();
   const timeBetween = DateTime.fromISO(endsAt)
     .diff(now, ['days', 'hours', 'minutes', 'seconds'])
     .toObject();
@@ -53,13 +55,15 @@ async function postDetail() {
   }
 
   const itemTagContainer = document.querySelector('#itemTagContainer');
+  const itemTags = document.querySelector('#itemTags');
+  itemTags.innerHTML = ``;
   for (let i = 0; i < data.tags.length; i += 1) {
     if (data.tags.length === 1) {
-      itemTagContainer.innerHTML = `<span class="font-semibold">Tags: </span>${data.tags[i]}`;
+      itemTags.innerHTML += `${data.tags[i]}`;
     } else if (data.tags.length > 1 && data.tags.length === i) {
-      itemTagContainer.innerHTML = `<span class="font-semibold">Tags: </span>${data.tags[i]}`;
+      itemTags.innerHTML += `${data.tags[i]}`;
     } else {
-      itemTagContainer.innerHTML = `<span class="font-semibold">Tags: </span>${data.tags[i]}, `;
+      itemTags.innerHTML += `${data.tags[i]}, `;
     }
   }
   if (data.tags[0] === '') {
@@ -73,6 +77,7 @@ async function postDetail() {
   }
 
   if (slider) {
+    slider.innerHTML = '';
     let counter = 0;
     for (let i = data.bids.length - 1; i >= 0; i -= 1) {
       counter += 1;
