@@ -61,26 +61,25 @@ async function getItemData() {
 
 creditBtn50.addEventListener('click', () => {
   getItemData().then((data) => {
-    console.log(data);
-    console.log(data.bids.length);
     if (data.bids.length) {
       const result = data.bids[data.bids.length - 1].bidderName;
 
       if (result === userName) {
-        console.log('kan inte');
         bidMessageContainer.classList.add('flex');
         bidMessageContainer.classList.remove('hidden');
         bidMessage.innerHTML = `You already have the highest bid`;
       } else {
-        bidOnItem(amount50);
-        updateLocalStorage().then(() => {
-          dynamicHeader();
+        bidOnItem(amount50).then(() => {
+          updateLocalStorage().then(() => {
+            dynamicHeader();
+          });
         });
       }
     } else {
-      bidOnItem(amount50);
-      updateLocalStorage().then(() => {
-        dynamicHeader();
+      bidOnItem(amount50).then(() => {
+        updateLocalStorage().then(() => {
+          dynamicHeader();
+        });
       });
     }
   });

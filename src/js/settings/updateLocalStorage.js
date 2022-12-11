@@ -16,7 +16,7 @@ async function updateLocalStorage() {
   });
   const data = await response.json();
   if (response.ok) {
-    console.log(data);
+    console.log('Helloo', data);
     saveCreditsInLocalStorage(data.credits);
   }
 }

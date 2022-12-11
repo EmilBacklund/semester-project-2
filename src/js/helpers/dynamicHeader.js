@@ -1,9 +1,6 @@
 import { getUserFromLocalStorage } from '../settings/localStorage';
-import updateLocalStorage from '../settings/updateLocalStorage';
 
 function dynamicHeader() {
-  updateLocalStorage();
-
   const header = document.querySelector('#header');
   const userData = getUserFromLocalStorage();
   let { pathname } = window.document.location;
