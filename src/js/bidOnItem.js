@@ -8,6 +8,9 @@ const jwtToken = getUserFromLocalStorage().token;
 const userName = getUserFromLocalStorage().user.name;
 const bidMessage = document.querySelector('#bidMessage');
 const bidMessageContainer = document.querySelector('#bidMessageContainer');
+const loginContainer = document.querySelector('#loginContainer');
+const loginYesBtn = document.querySelector('#loginYesBtn');
+const loginNoBtn = document.querySelector('#loginNoBtn');
 
 const creditBtn50 = document.querySelector('#creditBtn50');
 const creditBtn100 = document.querySelector('#creditBtn100');
@@ -60,14 +63,22 @@ async function getItemData() {
 }
 
 creditBtn50.addEventListener('click', () => {
-  getItemData().then((data) => {
-    if (data.bids.length) {
-      const result = data.bids[data.bids.length - 1].bidderName;
+  if (jwtToken) {
+    getItemData().then((data) => {
+      if (data.bids.length) {
+        const result = data.bids[data.bids.length - 1].bidderName;
 
-      if (result === userName) {
-        bidMessageContainer.classList.add('flex');
-        bidMessageContainer.classList.remove('hidden');
-        bidMessage.innerHTML = `You already have the highest bid`;
+        if (result === userName) {
+          bidMessageContainer.classList.add('flex');
+          bidMessageContainer.classList.remove('hidden');
+          bidMessage.innerHTML = `You already have the highest bid`;
+        } else {
+          bidOnItem(amount50).then(() => {
+            updateLocalStorage().then(() => {
+              dynamicHeader();
+            });
+          });
+        }
       } else {
         bidOnItem(amount50).then(() => {
           updateLocalStorage().then(() => {
@@ -75,37 +86,48 @@ creditBtn50.addEventListener('click', () => {
           });
         });
       }
-    } else {
-      bidOnItem(amount50).then(() => {
-        updateLocalStorage().then(() => {
-          dynamicHeader();
-        });
-      });
-    }
-  });
+    });
+  } else {
+    loginContainer.classList.add('flex');
+    loginContainer.classList.remove('hidden');
+  }
 });
 
 creditBtn100.addEventListener('click', () => {
-  getItemData().then((data) => {
-    console.log(data);
-    console.log(data.bids.length);
-    if (data.bids.length) {
-      const result = data.bids[data.bids.length - 1].bidderName;
-      if (result === userName) {
-        bidMessageContainer.classList.add('flex');
-        bidMessageContainer.classList.remove('hidden');
-        bidMessage.innerHTML = `You already have the highest bid`;
+  if (jwtToken) {
+    getItemData().then((data) => {
+      console.log(data);
+      console.log(data.bids.length);
+      if (data.bids.length) {
+        const result = data.bids[data.bids.length - 1].bidderName;
+        if (result === userName) {
+          bidMessageContainer.classList.add('flex');
+          bidMessageContainer.classList.remove('hidden');
+          bidMessage.innerHTML = `You already have the highest bid`;
+        } else {
+          bidOnItem(amount100);
+          updateLocalStorage().then(() => {
+            dynamicHeader();
+          });
+        }
       } else {
         bidOnItem(amount100);
         updateLocalStorage().then(() => {
           dynamicHeader();
         });
       }
-    } else {
-      bidOnItem(amount100);
-      updateLocalStorage().then(() => {
-        dynamicHeader();
-      });
-    }
-  });
+    });
+  } else {
+    loginContainer.classList.add('flex');
+    loginContainer.classList.remove('hidden');
+  }
+});
+
+loginYesBtn.addEventListener('click', () => {
+  window.document.location = '/login.html';
+});
+
+loginNoBtn.addEventListener('click', () => {
+  loginContainer.classList.remove('flex');
+  loginContainer.classList.add('hidden');
 });

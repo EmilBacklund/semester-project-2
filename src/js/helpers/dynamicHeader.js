@@ -10,7 +10,6 @@ function dynamicHeader() {
   }
 
   function credit() {
-    console.log(userData.credit);
     if (userData.credit) {
       return `
     <div class="flex items-center gap-2 text-base md:text-xl  px-2 py-1 bg-zinc-800 rounded-xl shadow-[inset_0_0_6px_rgba(255,255,255,0.25)]">

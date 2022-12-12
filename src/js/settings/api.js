@@ -10,6 +10,7 @@ const ALLPOSTS_ENDPOINT = `${BASE_URL}api/v1/auction/listings?_seller=true&_bids
 const SINGLEPOST_ENDPOINT = `${BASE_URL}api/v1/auction/listings/`;
 const BIDONITEM_ENDPOINT = `${BASE_URL}api/v1/auction/listings/`;
 const PROFILE_ENDPOINT = `${BASE_URL}api/v1/auction/profiles/${userName}`;
+const CREATE_AUCTION_ENDPOINT = `${BASE_URL}api/v1/auction/listings`;
 
 export {
   REGISTER_ENDPOINT,
@@ -18,4 +19,5 @@ export {
   SINGLEPOST_ENDPOINT,
   BIDONITEM_ENDPOINT,
   PROFILE_ENDPOINT,
+  CREATE_AUCTION_ENDPOINT,
 };

@@ -14,6 +14,7 @@
     <script type="module" src="./js/index.js" defer></script>
     <script type="module" src="./js/helpers/tagHandler.js" defer></script>
     <script type="module" src="./js/helpers/auctionDuration.js" defer></script>
+    <script type="module" src="./js/createAuction.js" defer></script>
     <script
       type="module"
       src="./js/helpers/auctionImageHandler.js"
@@ -47,23 +48,31 @@
         <div>
           <label for="item">Item:</label>
           <input
+            id="itemTitle"
             class="w-full p-2 rounded text-black"
             type="text"
             placeholder="Name of item.."
             name="item"
           />
+          <p id="titleError" class="text-red-500 hidden">
+            Name of item is required
+          </p>
         </div>
         <div>
-          <label for="description">Item:</label>
+          <label for="description">Description:</label>
           <textarea
+            id="itemDescription"
             class="w-full p-2 rounded text-black"
             placeholder="Description of item.."
             name="description"
           ></textarea>
+          <p id="descriptionError" class="text-red-500 hidden">
+            Description of item is required
+          </p>
         </div>
         <div class="">
           <div class="flex gap-4 items-center">
-            <label for="images">Images (min 1, max 3):</label
+            <label for="images">Images (max 3):</label
             ><img src="images/add-image.svg" alt="add image" />
           </div>
           <div id="imageHandler" class="flex mb-2">
@@ -114,6 +123,9 @@
             placeholder="Type your tag & press enter.."
             name="tags"
           />
+          <p id="tagError" class="mb-2 text-red-500 hidden">
+            Tag already exists
+          </p>
           <div id="tagContainer" class="flex gap-2 flex-wrap"></div>
         </div>
         <div>
@@ -140,13 +152,18 @@
               48H
             </button>
           </div>
+          <p id="itemDurationError" class="text-red-500 hidden">
+            You need to choose auction duration
+          </p>
           <p id="auctionEnd" class="flex flex-col"></p>
         </div>
-        <button
-          class="bg-green-600 py-2 w-full rounded font-semibold text-xl mt-2"
-        >
-          Submit
-        </button>
+        <form id="createAuctionForm">
+          <button
+            class="bg-green-600 py-2 w-full rounded font-semibold text-xl mt-2"
+          >
+            Submit
+          </button>
+        </form>
       </section>
     </main>
   </body>
