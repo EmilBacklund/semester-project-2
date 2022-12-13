@@ -25,6 +25,11 @@ function draggableSlider(slide) {
     const walk = x - startX;
     slider.scrollLeft = scrollLeft - walk;
   });
+
+  slider.addEventListener('wheel', (evt) => {
+    evt.preventDefault();
+    slider.scrollLeft += evt.deltaY;
+  });
 }
 
 export default draggableSlider;

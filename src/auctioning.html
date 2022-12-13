@@ -12,7 +12,6 @@
     />
     <title>AH | Favorites</title>
     <script type="module" src="./js/index.js" defer></script>
-    <script type="module" src="./js/helpers/tagHandler.js" defer></script>
     <script type="module" src="./js/helpers/auctionDuration.js" defer></script>
     <script type="module" src="./js/createAuction.js" defer></script>
     <script
@@ -44,8 +43,10 @@
           ></div>
           <h1 class="font-signika text-xl font-semibold">Create Auction</h1>
         </div>
+
         <p>Auctions always start at 0 CR</p>
         <div>
+          <p id="generalMessage" class="text-red-500 text-lg break-words"></p>
           <label for="item">Item:</label>
           <input
             id="itemTitle"
@@ -65,6 +66,7 @@
             class="w-full p-2 rounded text-black"
             placeholder="Description of item.."
             name="description"
+            maxlength="280"
           ></textarea>
           <p id="descriptionError" class="text-red-500 hidden">
             Description of item is required

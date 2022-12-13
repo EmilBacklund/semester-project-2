@@ -1,3 +1,7 @@
+function clearStorage() {
+  localStorage.clear();
+}
+
 function saveTokenInLocalStorage(token) {
   localStorage.setItem('token', JSON.stringify(token));
 }
@@ -40,4 +44,5 @@ export {
   saveTokenInLocalStorage,
   saveUserInLocalStorage,
   getUserFromLocalStorage,
+  clearStorage,
 };

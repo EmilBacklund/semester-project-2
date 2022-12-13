@@ -22,7 +22,7 @@ function auctionHTML() {
         <h1 id="itemSliderTitle" class="font-semibold"></h1>
         <p>Currently Highest Bid:</p>
     </div>
-    <div id="slider" class="x-slide overflow-x-auto flex gap-5 w-full transition-all duration-200 cursor-grab">
+    <div id="slider" class="x-slide overflow-x-auto flex gap-5 w-full transition-all duration-200 cursor-grab scroll-smooth">
     
    
       
