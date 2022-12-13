@@ -7,8 +7,6 @@ function displayPosts(data, container) {
     let counter = 0;
     let highestBid = 0;
     for (let j = 0; j < data.length; j += 1) {
-      let firstImage = !data[j].media[0];
-
       if (data[j].bids[0]) {
         highestBid = data[j].bids[0].amount;
       } else {
@@ -16,7 +14,7 @@ function displayPosts(data, container) {
       }
 
       if (!data[j].media[0]) {
-        firstImage = 'images/no-image.png';
+        data[j].media[0] = 'images/no-image.png';
       }
 
       counter += 1;
@@ -28,7 +26,7 @@ function displayPosts(data, container) {
             <a href="details.html?id=${data[j].id}">
               <img
                 class="object-cover w-full rounded-xl h-[calc(100%-40px)]"
-                src="${firstImage}"
+                src="${data[j].media[0]}"
                 alt=""
               />
             </a>

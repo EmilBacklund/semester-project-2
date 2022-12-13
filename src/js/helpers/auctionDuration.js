@@ -11,7 +11,9 @@ for (let i = 0; i < durationButtons.length; i += 1) {
       .plus({ hours: h })
       .toLocaleString(DateTime.DATETIME_MED);
 
-    auctionEnd.innerHTML = `<span>Ends:</span> <span class="text-amber-400">${duration}</span>`;
+    const auctionEnds = DateTime.now().plus({ hours: h }).toISO();
+
+    auctionEnd.innerHTML = `<span>Ends:</span> <span id=itemDuration value=${auctionEnds} class="text-amber-400">${duration}</span>`;
 
     const current = document.getElementsByClassName('outline');
     if (current.length > 0) {

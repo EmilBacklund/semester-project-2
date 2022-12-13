@@ -5,6 +5,16 @@ function dynamicHeader() {
   const userData = getUserFromLocalStorage();
   let { pathname } = window.document.location;
 
+  console.log(userData);
+
+  if (
+    (pathname === '/profile.html' && !userData.token) ||
+    (pathname === '/auctioning.html' && !userData.token)
+  ) {
+    console.log(pathname);
+    window.document.location = '/login.html';
+  }
+
   if (!pathname || pathname === '/') {
     pathname = '/index.html';
   }
@@ -22,7 +32,6 @@ function dynamicHeader() {
     }
     return ``;
   }
-
   function avatar() {
     if (userData.user.avatar) {
       return `
