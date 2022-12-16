@@ -17,45 +17,7 @@
   <body class="bg-stone-900 text-white font-poppins text-sm font-light">
     <header id="header" class="p-5 flex justify-between items-center"></header>
     <main class="max-w-3xl mx-auto w-[calc(100%-40px)]">
-      <div class="flex flex-col gap-2">
-        <div class="flex gap-5">
-          <div class="rounded-xl overflow-hidden flex-1 relative">
-            <img
-              class="object-cover h-full rounded-xl"
-              src="images/profile-example.jpg"
-              alt="Angus MacGyver"
-            />
-            <button
-              class="absolute bottom-0 right-0 h-10 w-10 bg-neutral-500 rounded-lg opacity-70 hover:scale-110 transition-all duration-200 hover:opacity-50"
-            >
-              <div class="relative">
-                <div
-                  class="absolute w-5 h-0.5 bg-stone-900 inset-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
-                ></div>
-                <div
-                  class="absolute h-5 w-0.5 bg-stone-900 inset-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
-                ></div>
-              </div>
-            </button>
-          </div>
-          <div class="flex-1 flex flex-col gap-2 font-normal">
-            <h1 class="text-base text-neutral-500 font-signika md:text-xl">
-              Angus MacGyver
-            </h1>
-            <div class="md:text-base">
-              <p>Sold items: <span class="text-neutral-500">8</span></p>
-              <p>Won items: <span class="text-neutral-500">1</span></p>
-              <p>Active Auctions: <span class="text-neutral-500">2</span></p>
-              <p>Total Auctions: <span class="text-neutral-500">10</span></p>
-              <p>Active bids: <span class="text-neutral-500">4</span></p>
-              <p>Earnings: <span class="text-neutral-500">+1000</span></p>
-            </div>
-          </div>
-        </div>
-        <p class="text-base text-neutral-500 mb-4 md:text-xl">
-          angus.macgyver@outlook.com
-        </p>
-      </div>
+      <div id="profileContainer" class="flex flex-col gap-2 relative"></div>
       <div class="flex gap-2">
         <a href="auctioning.html">
           <button
@@ -72,7 +34,6 @@
           Logout
         </button>
       </div>
-      <h2 class="md:text-base">Credit stats:</h2>
     </main>
   </body>
 </html>
