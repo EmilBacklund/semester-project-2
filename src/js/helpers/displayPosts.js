@@ -19,18 +19,18 @@ function displayPosts(data, container) {
 
       counter += 1;
       if (counter === 1) {
-        containerHTML += `<div class="grid grid-rows-3 grid-cols-2 min-w-full gap-4 max-h-[calc(100vh-206px)]">`;
+        containerHTML += `<div class="grid grid-rows-3 grid-cols-2 min-w-full gap-4 max-h-[calc(100vh-257px)]">`;
       }
       if (counter === 1 || counter === 4) {
-        containerHTML += `<div>
-            <a href="details.html?id=${data[j].id}">
+        containerHTML += `<div class="row-span-1 flex flex-col">
+            <a href="details.html?id=${data[j].id}" class="min-h-0 mb-2 h-full ">
               <img
-                class="object-cover w-full rounded-xl h-[calc(100%-40px)]"
+                class="object-cover w-full rounded-xl h-full"
                 src="${data[j].media[0]}"
-                alt=""
+                alt="${data[j].title}"
               />
             </a>
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center flex-wrap">
                 <div>
                     <p class="">${data[j].title}</p>
                     <p>Current bid: ${highestBid} Credits</p>
@@ -39,22 +39,22 @@ function displayPosts(data, container) {
                     <div class="w-8 h-8"><img
                     class="object-cover h-full w-full"
                     src="${data[j].seller.avatar}"
-                    alt=""/>
+                    alt="${data[j].seller.name}"/>
                     </div>
                     <p>${data[j].seller.name}</p>
                 </div>
             </div>
           </div>`;
       } else {
-        containerHTML += `<div class="row-span-2">
-        <a href="details.html?id=${data[j].id}">
+        containerHTML += `<div class="row-span-2 flex flex-col">
+        <a href="details.html?id=${data[j].id}" class="h-full mb-2 min-h-0">
             <img
-              class="object-cover w-full rounded-xl h-[calc(100%-40px)]"
+              class="object-cover w-full rounded-xl h-full"
               src="${data[j].media[0]}"
-              alt=""
+              alt="${data[j].title}"
             />
             </a>
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center flex-wrap">
                 <div>
                     <p class="">${data[j].title}</p>
                     <p>Current bid: ${highestBid} Credits</p>
@@ -63,7 +63,7 @@ function displayPosts(data, container) {
                     <div class="w-8 h-8"><img
                     class="object-cover h-full w-full"
                     src="${data[j].seller.avatar}"
-                    alt=""/>
+                    alt="${data[j].seller.name}"/>
                     </div>
                     <p>${data[j].seller.name}</p>
                 </div>

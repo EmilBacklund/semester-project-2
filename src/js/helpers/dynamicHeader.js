@@ -64,7 +64,7 @@ function dynamicHeader() {
   }
 
   if (header && pathname === '/details.html') {
-    header.innerHTML = ` <a href="index.html"><img src="images/arrow-back.svg" alt="" /></a>
+    header.innerHTML = ` <a href="index.html"><img src="images/arrow-back.svg" alt="previous page" /></a>
     <div class="flex gap-4 items-center">
     ${credit()}
         <div class="w-8 h-8 cursor-pointer odd:hover:opacity-0 even:hover:opacity-100 relative"

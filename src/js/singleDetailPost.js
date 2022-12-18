@@ -15,7 +15,6 @@ async function postDetail() {
     },
   );
   const data = await response.json();
-  console.log(data);
   const { endsAt } = data;
   const now = DateTime.now();
   const timeBetween = DateTime.fromISO(endsAt)
@@ -32,6 +31,8 @@ async function postDetail() {
   seconds = `${seconds ? `${seconds} seconds` : ''}`;
 
   const itemDuration = document.querySelector('#itemDuration');
+
+  document.title = `AH | ${data.title}`;
 
   itemDuration.innerHTML = `<span class="font-semibold">Time left:</span>
   ${days} ${hours} ${minutes} ${seconds}`;
@@ -84,7 +85,7 @@ async function postDetail() {
       slider.innerHTML += `<div class="flex-none relative">
     <img
       src="images/ticket.svg"
-      alt=""
+      alt="ticket ${counter}"
     />
     <div class="flex gap-4 absolute inset-1/2 -translate-x-1/4 w-full -translate-y-1/4  items-center">
     <div class="w-8 h-8 shrink-0 bg-green-700 rounded-xl text-xl font-semibold text-center leading-8">${counter}</div>

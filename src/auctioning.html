@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="images/hammer-favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Signika+Negative:wght@300;400;500;600;700&family=Syne+Mono&display=swap"
       rel="stylesheet"
     />
-    <title>AH | Favorites</title>
+    <title>AH | Auction items</title>
     <script type="module" src="./js/index.js" defer></script>
     <script type="module" src="./js/helpers/auctionDuration.js" defer></script>
     <script type="module" src="./js/createAuction.js" defer></script>
@@ -21,18 +21,8 @@
     ></script>
   </head>
   <body class="bg-stone-900 text-white font-poppins text-sm">
-    <header class="p-5 flex justify-between items-center">
-      <div class="flex items-center gap-4">
-        <a href="/"><i class="font-syne not-italic text-4xl">AH</i></a>
-        <a href="favorites.html"
-          ><span><img src="images/bx-heart.svg" alt="favorite" /></span
-        ></a>
-      </div>
-      <a href="profile.html"
-        ><span
-          ><img src="images/bxs-user-circle-active.svg" alt="profile" /></span
-      ></a>
-    </header>
+    <header id="header" class="p-5 flex justify-between items-center"></header>
+
     <main class="max-w-3xl mx-auto w-[calc(100%-40px)]">
       <section
         class="px-5 py-4 max-w-md mx-auto flex flex-col gap-4 font-normal"
@@ -79,13 +69,13 @@
           </div>
           <div id="imageHandler" class="flex mb-2">
             <div class="w-1/3">
-              <img class="item-image" src="" alt="" />
+              <img class="item-image" src="" alt="main item image" />
             </div>
             <div class="w-1/3">
-              <img class="item-image" src="" alt="" />
+              <img class="item-image" src="" alt="secondary item image" />
             </div>
             <div class="w-1/3">
-              <img class="item-image" src="" alt="" />
+              <img class="item-image" src="" alt="third item image" />
             </div>
           </div>
           <div class="flex flex-col gap-2">

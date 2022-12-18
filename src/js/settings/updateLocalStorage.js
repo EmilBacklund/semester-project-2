@@ -23,8 +23,6 @@ async function updateLocalStorage() {
     const data = await response.json();
 
     if (response.ok) {
-      console.log('Helloo', data);
-
       const userInfo = {
         name: data.name,
         email: data.email,
