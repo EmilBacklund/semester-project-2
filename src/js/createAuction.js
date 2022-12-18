@@ -2,7 +2,6 @@ import { CREATE_AUCTION_ENDPOINT } from './settings/api';
 import { getUserFromLocalStorage } from './settings/localStorage';
 
 const jwtToken = getUserFromLocalStorage().token;
-const userName = getUserFromLocalStorage().user.name;
 
 const createAuctionForm = document.querySelector('#createAuctionForm');
 const generalMessage = document.querySelector('#generalMessage');

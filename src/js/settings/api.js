@@ -11,6 +11,7 @@ const SINGLEPOST_ENDPOINT = `${BASE_URL}api/v1/auction/listings/`;
 const BIDONITEM_ENDPOINT = `${BASE_URL}api/v1/auction/listings/`;
 const PROFILE_ENDPOINT = `${BASE_URL}api/v1/auction/profiles/${userName}`;
 const CREATE_AUCTION_ENDPOINT = `${BASE_URL}api/v1/auction/listings`;
+const EDIT_AVATAR_ENDPOINT = `${BASE_URL}api/v1/auction/profiles/${userName}/media`;
 
 export {
   REGISTER_ENDPOINT,
@@ -20,4 +21,5 @@ export {
   BIDONITEM_ENDPOINT,
   PROFILE_ENDPOINT,
   CREATE_AUCTION_ENDPOINT,
+  EDIT_AVATAR_ENDPOINT,
 };
