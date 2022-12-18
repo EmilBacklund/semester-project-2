@@ -16,7 +16,6 @@ async function getAllPosts() {
 
   postData = await response.json();
 
-  console.log(response);
   if (response.ok) {
     generalMessage.classList.add('hidden');
     displayPosts(postData, postContainer);
@@ -34,7 +33,6 @@ async function getAllPosts() {
     ${postData.statusCode}`;
   }
 
-  console.log(postData);
   generalMessage.classList.remove('hidden');
   generalMessage.innerHTML = errorMessage;
 }

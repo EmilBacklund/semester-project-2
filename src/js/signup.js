@@ -159,7 +159,6 @@ function clickHandler() {
 
         if (response.ok) {
           const data = await response.json();
-          console.log(data);
           loginInnerHTML(loginContainer, introContainer);
           login.className =
             'w-full py-2 bg-green-500 rounded-tr-xl hover:outline hover:z-10';

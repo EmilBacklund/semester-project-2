@@ -10,8 +10,6 @@ async function loginUser(endpoint, userData) {
   const jsonResponse = await response.json();
 
   if (response.ok) {
-    console.log(jsonResponse);
-
     const user = {
       name: jsonResponse.name,
       email: jsonResponse.email,

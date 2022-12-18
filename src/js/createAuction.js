@@ -23,8 +23,6 @@ function tagHandler() {
 
       let tagExists = false;
 
-      console.dir(tagContainer);
-
       for (let j = 0; j < tags.length; j += 1) {
         if (tags[j].innerHTML === input.value) {
           tagError.classList.remove('hidden');
@@ -71,9 +69,7 @@ function tagHandler() {
           tagArray[i] = '';
         });
       }
-      console.log(tagArray);
       itemTags = tagArray.filter((tag) => tag);
-      console.log(itemTags);
     }
   });
 }
@@ -90,11 +86,8 @@ async function createAuction(data) {
     body: JSON.stringify(data),
   });
 
-  console.log('inside async function', JSON.stringify(data));
-
   const jsonResponse = await response.json();
 
-  console.log(jsonResponse);
   if (response.ok) {
     window.document.location = `details.html?id=${jsonResponse.id}`;
   }
@@ -168,8 +161,6 @@ createAuctionForm.addEventListener('submit', (e) => {
     itemImageIsValid &&
     itemDurationIsValid
   ) {
-    console.dir(itemDuration.attributes.value.nodeValue);
-
     const requestedBody = {
       title: itemTitle.value,
       description: itemDescription.value,
@@ -178,11 +169,8 @@ createAuctionForm.addEventListener('submit', (e) => {
       endsAt: itemDuration.attributes.value.nodeValue,
     };
 
-    console.log(requestedBody);
     createAuction(requestedBody)
-      .then((data) => {
-        console.log('what data is this?', data);
-      })
+      .then(() => {})
       .catch((errorMessage) => {
         generalMessage.innerHTML = `${errorMessage}`;
         generalMessage.classList.add('text-red-500');

@@ -32,9 +32,7 @@ async function bidOnItem(credit) {
   });
 
   const data = await response.json();
-  console.log(data);
   if (response.ok) {
-    console.log(response);
     bidMessageContainer.classList.add('flex');
     bidMessageContainer.classList.remove('hidden');
     bidMessage.innerHTML = `Successful bid 🙂`;
@@ -57,7 +55,6 @@ async function getItemData() {
   );
 
   const data = await response.json();
-  console.log(data);
 
   return data;
 }
@@ -96,8 +93,6 @@ creditBtn50.addEventListener('click', () => {
 creditBtn100.addEventListener('click', () => {
   if (jwtToken) {
     getItemData().then((data) => {
-      console.log(data);
-      console.log(data.bids.length);
       if (data.bids.length) {
         const result = data.bids[data.bids.length - 1].bidderName;
         if (result === userName) {

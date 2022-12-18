@@ -33,7 +33,6 @@ function validateLoginInfo() {
 
   loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log(loginForm);
 
     for (let i = 0; i < loginEmptyFields.length; i += 1) {
       if (!loginFields[i].value) {
@@ -42,21 +41,6 @@ function validateLoginInfo() {
         loginEmptyFields[i].classList.add('hidden');
       }
     }
-
-    console.log(
-      validateInput(
-        loginName,
-        loginNameError,
-        loginPassword,
-        loginPasswordError,
-        loginEmail,
-        loginEmailError,
-      ),
-    );
-
-    console.log(loginNameError);
-    console.log(loginEmailError);
-    console.log(loginPasswordError);
 
     if (
       validateInput(

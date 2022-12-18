@@ -36,6 +36,8 @@ async function getUserInfo() {
   if (response.ok) {
     const data = await response.json();
 
+    document.title = `AH | ${data.name}'s Profile`;
+
     profileContainer.innerHTML = ` <div class="flex gap-5">
     <div class="rounded-xl overflow-hidden flex-1 relative">
       <img
