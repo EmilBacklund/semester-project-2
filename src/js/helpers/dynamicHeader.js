@@ -67,38 +67,10 @@ function dynamicHeader() {
     header.innerHTML = ` <a href="index.html"><img src="images/arrow-back.svg" alt="previous page" /></a>
     <div class="flex gap-4 items-center">
     ${credit()}
-        <div class="w-8 h-8 cursor-pointer odd:hover:opacity-0 even:hover:opacity-100 relative"
-          ><div id="noFav" class="absolute h-full w-full bg-no-repeat bg-center bg-[url('images/bx-heart.svg')] "></div>
-          <div id="fav" class="absolute h-full w-full bg-no-repeat bg-center transition-all hover:scale-125 duration-300 opacity-0 hover:opacity-100 hover:bg-[url('images/bxs-heart.svg')]">
+        <div class=" cursor-pointer odd:hover:opacity-0 even:hover:opacity-100 relative"
+          ><img class="object-cover" src="images/bx-heart.svg" alt="add to favorite" />
           </div>
     </div>`;
-
-    const fav = document.querySelector('#fav');
-    const noFav = document.querySelector('#noFav');
-    fav.addEventListener('mouseover', () => {
-      noFav.classList.add('hidden');
-      noFav.classList.add('opacity-0');
-    });
-    fav.addEventListener('mousedown', () => {
-      fav.classList.remove('hover:scale-125');
-      fav.classList.remove('scale-125');
-      fav.classList.add('scale-105');
-    });
-
-    fav.addEventListener('mouseup', () => {
-      fav.classList.toggle('scale-125');
-      fav.classList.toggle('opacity-100');
-      fav.classList.toggle('hover:opacity-100');
-      fav.classList.toggle('opacity-0');
-      fav.classList.toggle("bg-[url('images/bxs-heart.svg')]");
-      fav.classList.remove('scale-105');
-    });
-
-    fav.addEventListener('mouseleave', () => {
-      noFav.classList.add('opacity-100');
-      noFav.classList.remove('hidden');
-      fav.classList.add('hover:scale-125');
-    });
   }
 }
 
