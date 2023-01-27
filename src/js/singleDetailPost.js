@@ -78,23 +78,47 @@ async function postDetail() {
   }
 
   if (slider) {
+    const output = {
+      credit: [],
+      seller: [],
+    };
+    let inserted;
+
+    for (let i = 0; i < data.bids.length; i += 1) {
+      inserted = false;
+      for (let j = 0; j < output.credit.length; j += 1) {
+        if (data.bids[i].amount > output.credit[j]) {
+          inserted = true;
+          output.credit.splice(j, 0, data.bids[i].amount);
+          output.seller.splice(j, 0, data.bids[i].bidderName);
+          break;
+        }
+      }
+      if (!inserted) {
+        output.credit.push(data.bids[i].amount);
+        output.seller.push(data.bids[i].bidderName);
+      }
+    }
+
     slider.innerHTML = '';
     let counter = 0;
-    for (let i = data.bids.length - 1; i >= 0; i -= 1) {
+
+    for (let k = 0; k < output.credit.length; k += 1) {
       counter += 1;
+
       slider.innerHTML += `<div class="flex-none relative">
-    <img
-      src="images/ticket.svg"
-      alt="ticket ${counter}"
-    />
-    <div class="flex gap-4 absolute inset-1/2 -translate-x-1/4 w-full -translate-y-1/4  items-center">
-    <div class="w-8 h-8 shrink-0 bg-green-700 rounded-xl text-xl font-semibold text-center leading-8">${counter}</div>
-    <div>
-    <p class="text-neutral-500">${data.bids[i].bidderName}</p>
-    <p class="text-xl text-black font-normal">${data.bids[i].amount} CR</p>
-    </div>
-    </div>
-</div>`;
+      <img
+        src="images/ticket.svg"
+        alt="ticket ${counter}"
+      />
+      <div class="flex gap-4 absolute inset-1/2 -translate-x-1/4 w-full -translate-y-1/4  items-center">
+      <div class="w-8 h-8 shrink-0 bg-green-700 rounded-xl text-xl font-semibold text-center leading-8">${counter}</div>
+      <div>
+      <p class="text-neutral-500">${output.seller[k]}</p>
+      <p class="text-xl text-black font-normal">${output.credit[k]} CR</p>
+      </div>
+      </div>
+  </div>`;
     }
 
     if (!data.bids.length) {
